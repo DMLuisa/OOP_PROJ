@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Event.h" />
+    <ClInclude Include="Exceptions.h" />
     <ClInclude Include="Location.h" />
     <ClInclude Include="Ticket.h" />
   </ItemGroup>
