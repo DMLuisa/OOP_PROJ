@@ -1,7 +1,6 @@
-#include <iostream>
-#include "Location.h"
-#include "Event.h"
-#include "Ticket.h"
+#include "Location.cpp"
+#include "Event.cpp"
+#include "Ticket.cpp"
 using namespace std;
 
 

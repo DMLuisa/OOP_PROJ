@@ -1,6 +1,7 @@
 #include <string>
-#include "Exceptions.h"
+#include "Exceptions.cpp"
 #include <iostream>
+using namespace std;
 class Location {
 private:
 	int seat;
@@ -9,15 +10,13 @@ private:
 	static string Name;
 public:
 	Location() {
-		Name = "Unknown";
 		seat = 0;
 		regnrrow = 0;
 		zone = new char[1];
 		strcpy_s(zone, 1, "");
 	}
 
-	Location(string name, int seat, int regnrrow, char* zone) {
-		this->Name = name;
+	Location(int seat, int regnrrow, char* zone) {
 		this->seat = seat;
 		this->regnrrow = regnrrow;
 		this->zone = new char[strlen(zone) + 1];
@@ -78,7 +77,7 @@ public:
 			zonecode = 1;
 		if (comparezone(zone, "TRIBUNE") == true)
 			zonecode = 2;
-			
+
 
 		int* code = new int[3];
 		code[0] = zonecode;
@@ -120,7 +119,11 @@ public:
 	void setZone(char* zone)
 	{
 		if (strlen(zone) < 3)
-			throw ZoneEX("Zone is not valid. Try again!");
+		{
+			char p[30];
+			strcpy_s(p, 30, "Zone is not valid. Try again!");
+			throw ZoneEX(p);
+		}
 		else
 		{
 			this->zone = new char[strlen(zone) + 1];
@@ -128,11 +131,11 @@ public:
 		}
 	}
 
-	void setName(string name)
+	void setName(string Name)
 	{
-		this->Name = name;
+		Location::Name = Name;
 	}
-	
+
 	friend ostream& operator<<(ostream& out, Location a)
 	{
 		out << "Location details" << endl;
@@ -152,8 +155,7 @@ public:
 		cout << "Name: ";
 		string buffer;
 		in >> buffer;
-		a.setName(buffer.c_str());
-
+		a.setName(buffer);
 		cout << "Zone: ";
 		string buffer2;
 		in >> buffer2;
@@ -176,13 +178,4 @@ public:
 	}
 	friend class Event;
 };
-
-
-
-
-
-
-
-
-
-
+string Location::Name = "Unknown";
