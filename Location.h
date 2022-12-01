@@ -1,5 +1,6 @@
 #include <string>
 #include "Exceptions.h"
+#include <iostream>
 class Location {
 private:
 	int seat;
@@ -8,7 +9,7 @@ private:
 	static string Name;
 public:
 	Location() {
-		Name = "Necunoscut";
+		Name = "Unknown";
 		seat = 0;
 		regnrrow = 0;
 		zone = new char[1];
@@ -59,7 +60,7 @@ public:
 
 	bool comparezone(char* a, string b)
 	{
-		if (strlen(a) != b.size())
+		if (strlen(a) != b.length())
 			return false;
 		else
 			for (int i = 0; i < strlen(a); i++)
@@ -70,15 +71,14 @@ public:
 
 	int* seatcodeGen(int seat, int row, char* zone)
 	{
-		int zonecode;
+		int zonecode = 3;
 		if (comparezone(zone, "VIP") == true)
 			zonecode = 0;
 		if (comparezone(zone, "LAWN") == true)
 			zonecode = 1;
 		if (comparezone(zone, "TRIBUNE") == true)
 			zonecode = 2;
-		if (comparezone(zone, "REGULAR") == true)
-			zonecode = 3;
+			
 
 		int* code = new int[3];
 		code[0] = zonecode;
@@ -133,10 +133,48 @@ public:
 		this->Name = name;
 	}
 	
+	friend ostream& operator<<(ostream& out, Location a)
+	{
+		out << "Location details" << endl;
+		out << "Name: " << a.Name << endl;
+		if (a.zone != nullptr)
+		{
+			out << "Zones: Regular and " << a.zone << endl;
+		}
+		else out << "This location has no special zones." << endl;
+		out << "Regular zone rows: " << a.regnrrow << endl;
+		out << "Seats per row: " << a.seat;
+		return out;
+	}
+
+	friend istream& operator>>(istream& in, Location& a)
+	{
+		cout << "Name: ";
+		string buffer;
+		in >> buffer;
+		a.setName(buffer.c_str());
+
+		cout << "Zone: ";
+		string buffer2;
+		in >> buffer2;
+		int n = buffer2.length();
+		char* v = new char[n + 1];
+		strcpy_s(v, n + 1, buffer2.c_str());
+		a.setZone(v);
+		delete[] v;
+		cout << "Number of regular zone rows: ";
+		in >> a.regnrrow;
+		cout << "Number of seats per row: ";
+		in >> a.seat;
+		return in;
+	}
+
+
 	~Location() {
 		if (this->zone != nullptr)
 			delete[] this->zone;
 	}
+	friend class Event;
 };
 
 
