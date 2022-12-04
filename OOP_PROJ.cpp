@@ -3,7 +3,7 @@
 #include "Ticket.cpp"
 
 using namespace std;
-
+string Location::Name = "Unknown";
 
 
 int main()

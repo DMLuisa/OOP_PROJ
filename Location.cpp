@@ -175,4 +175,4 @@ public:
 	}
 	friend class Event;
 };
-string Location::Name = "Unknown";
+
