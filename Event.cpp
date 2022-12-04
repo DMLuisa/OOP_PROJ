@@ -1,7 +1,4 @@
-#include <string>
-#include "Exceptions.cpp"
-#include <iostream>
-using namespace std;
+#include "Location.cpp"
 class Event {
 private:
 	string EvName;
@@ -36,9 +33,7 @@ public:
 	{
 		if (name.length() < 5)
 		{
-			char p[36];
-			strcpy_s(p, 36, "Event name is not valid. Try again!");
-			throw EvEX(p);
+			throw "Event name is not valid. Try again!";
 		}
 		else this->EvName = name;
 	}

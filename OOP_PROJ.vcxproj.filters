@@ -27,8 +27,5 @@
     <ClCompile Include="Ticket.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="Exceptions.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

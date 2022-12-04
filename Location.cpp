@@ -30,7 +30,7 @@ public:
 		if (l.zone != nullptr)
 		{
 			this->zone = new char[strlen(l.zone) + 1];
-			strcpy_s(this->zone, strlen(l.zone) + 1, zone);
+			strcpy_s(this->zone, strlen(l.zone) + 1, l.zone);
 		}
 		else {
 			this->zone = nullptr;
@@ -119,9 +119,7 @@ public:
 	{
 		if (strlen(zone) < 3)
 		{
-			char p[30];
-			strcpy_s(p, 30, "Zone is not valid. Try again!");
-			throw ZoneEX(p);
+			throw "Zone is not valid. Try again!";
 		}
 		else
 		{

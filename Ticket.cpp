@@ -1,7 +1,4 @@
-#include <string>
-#include "Exceptions.cpp"
-#include <iostream>
-using namespace std;
+#include "Event.cpp"
 class Ticket {
 private:
 	int* ticketID;
@@ -38,9 +35,7 @@ public:
 	{
 		if (name.length() < 7)
 		{
-			char p[37];
-			strcpy_s(p, 37, "Person name is not valid. Try again!");
-			throw NameEX(p);
+			throw "The name is not valid. Try again!";
 		}
 		else this->personName = name;
 	}

@@ -128,7 +128,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Event.cpp" />
-    <ClCompile Include="Exceptions.cpp" />
     <ClCompile Include="Location.cpp" />
     <ClCompile Include="OOP_PROJ.cpp" />
     <ClCompile Include="Ticket.cpp" />
