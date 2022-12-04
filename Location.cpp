@@ -128,7 +128,7 @@ public:
 		}
 	}
 
-	void setName(string Name)
+	static void setName(string Name)
 	{
 		Location::Name = Name;
 	}

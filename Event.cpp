@@ -1,4 +1,6 @@
-#include "Location.cpp"
+#include <string>
+#include <iostream>
+using namespace std;
 class Event {
 private:
 	string EvName;

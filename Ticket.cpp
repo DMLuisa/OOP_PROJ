@@ -1,4 +1,6 @@
-#include "Event.cpp"
+#include <string>
+#include <iostream>
+using namespace std;
 class Ticket {
 private:
 	int* ticketID;
