@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Event.cpp"
 #include "Location.cpp"
+#include <cstdlib>
 using namespace std;
 class Ticket {
 private:
@@ -78,7 +79,9 @@ public:
 	}
 	int createRand()
 	{
-
+		srand((unsigned)time(NULL));
+		int rnd = 1000 + (rand() % 9999);
+		return rnd;
 	}
 
 	int* createID()

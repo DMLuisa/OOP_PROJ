@@ -205,9 +205,9 @@ public:
 
 	Event operator+(int i)
 	{
-		Event copie = *this;
-		copie.minute = copie.minute + i;
-		return copie;
+		Event copy = *this;
+		copy.minute = copy.minute + i;
+		return copy;
 	}
 	string event()
 	{
