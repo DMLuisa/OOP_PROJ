@@ -69,35 +69,46 @@ public:
 
 	int* seatcodeGen(int seat, int row, char* zone)
 	{
-		int zonecode = 3;
-		if (comparezone(zone, "VIP") == true)
-			zonecode = 0;
-		if (comparezone(zone, "LAWN") == true)
-			zonecode = 1;
-		if (comparezone(zone, "TRIBUNE") == true)
-			zonecode = 2;
+		if (seat <= this->seat && row <= this->regnrrow)
+		{
 
+			int zonecode = 3;
 
-		int* code = new int[3];
-		code[0] = zonecode;
-		code[1] = row;
-		code[2] = seat;
-		return code;
+			if (comparezone(zone, "VIP") == true)
+
+				zonecode = 0;
+
+			if (comparezone(zone, "LAWN") == true)
+
+				zonecode = 1;
+
+			if (comparezone(zone, "TRIBUNE") == true)
+
+				zonecode = 2;
+
+			int* code = new int[3];
+			code[0] = zonecode;
+			code[1] = row;
+			code[2] = seat;
+			return code;
+		}
+		else
+			throw "Either seat or row values are invalid. Try again!";
 	}
 
 	int getSeat()
 	{
-		return seat;
+		return this->seat;
 	}
 
 	int getRow()
 	{
-		return regnrrow;
+		return this->regnrrow;
 	}
 
 	char* getZone()
 	{
-		return zone;
+		return this->zone;
 	}
 
 	static string getName()
@@ -150,15 +161,13 @@ public:
 	friend istream& operator>>(istream& in, Location& a)
 	{
 		cout << "Name: ";
+		in >> a.Name;
+		cout << "Zone: ";
 		string buffer;
 		in >> buffer;
-		a.setName(buffer);
-		cout << "Zone: ";
-		string buffer2;
-		in >> buffer2;
-		int n = buffer2.length();
+		int n = buffer.length();
 		char* v = new char[n + 1];
-		strcpy_s(v, n + 1, buffer2.c_str());
+		strcpy_s(v, n + 1, buffer.c_str());
 		a.setZone(v);
 		delete[] v;
 		cout << "Number of regular zone rows: ";
@@ -168,11 +177,21 @@ public:
 		return in;
 	}
 
+	Location operator++()
+	{
+		this->seat++;
+		return *this;
+	}
+	bool operator!()
+	{
+		bool ok = this->seat > 30 ? true : false;
+		return ok;
+	}
 
 	~Location() {
 		if (this->zone != nullptr)
 			delete[] this->zone;
 	}
-	friend class Event;
+	friend class Ticket;
 };
 
