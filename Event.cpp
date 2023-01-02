@@ -240,5 +240,4 @@ public:
 
 	}
 	friend class Ticket;
-
 };

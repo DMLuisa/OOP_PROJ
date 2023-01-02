@@ -1,8 +1,9 @@
 #include <string>
 #include <iostream>
+#include <cstdlib>
 #include "Event.cpp"
 #include "Location.cpp"
-#include <cstdlib>
+
 using namespace std;
 class Ticket {
 private:
@@ -115,7 +116,7 @@ public:
 
 	~Ticket()
 	{
-		this->loc.~Location();
-		this->ev.~Event();
+		if (ticketID != nullptr)
+			delete[] ticketID;
 	}
 };
