@@ -132,6 +132,13 @@
     <ClCompile Include="OOP_PROJ.cpp" />
     <ClCompile Include="Ticket.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Events.txt" />
+    <Text Include="Locations.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ticket.bin" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
