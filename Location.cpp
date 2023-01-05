@@ -160,19 +160,13 @@ public:
 
 	friend istream& operator>>(istream& in, Location& a)
 	{
-		cout << "Name: ";
-		in >> a.Name;
-		cout << "Zone: ";
+		getline(in, a.Name);
 		string buffer;
-		in >> buffer;
-		int n = buffer.length();
-		char* v = new char[n + 1];
-		strcpy_s(v, n + 1, buffer.c_str());
+		getline(in, buffer);
+		char* v;
+		strcpy_s(v, buffer.length(), buffer.c_str());
 		a.setZone(v);
-		delete[] v;
-		cout << "Number of regular zone rows: ";
 		in >> a.regnrrow;
-		cout << "Number of seats per row: ";
 		in >> a.seat;
 		return in;
 	}

@@ -171,12 +171,12 @@ public:
 	{
 		out << "Event details" << endl;
 		out << "Name: " << a.EvName << endl;
+		out << "Location ID: " << a.locationID << endl;
 		out << "Year: " << a.year << endl;
 		out << "Month: " << a.month << endl;
 		out << "Day: " << a.day << endl;
 		out << "Hour: " << a.hour << endl;
 		out << "Minute: " << a.minute << endl;
-		out << "Location ID: " << a.locationID << endl;
 		return out;
 	}
 
